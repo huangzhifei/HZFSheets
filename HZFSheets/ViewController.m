@@ -13,6 +13,8 @@
 
 @interface ViewController ()<HZFPickerDelegate>
 
+@property (nonatomic, strong) NSArray *pickerSource;
+
 @end
 
 @implementation ViewController
@@ -20,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.pickerSource = @[@"item1", @"item2", @"item3"];
 }
 
 
@@ -49,11 +53,11 @@
 #pragma mark - HZFPickerDelegate
 
 - (NSInteger)numOfRow {
-    return 2;
+    return self.pickerSource.count;
 }
 
 - (NSString *)titleOfRow:(NSInteger)row {
-    return @"item";
+    return self.pickerSource[row];
 }
 
 @end
